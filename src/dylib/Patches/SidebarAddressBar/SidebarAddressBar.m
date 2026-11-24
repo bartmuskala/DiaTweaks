@@ -2,6 +2,11 @@
 #import "Settings.h"
 #import "Toolbar.h"
 
+// Upstream dropped this from Dia.h with the copy URL toast tweaks (#431); the sidebar still quiets Dia's own toast.
+#ifndef DPDiaToasts
+#define DPDiaToasts "_TtC11DiaToastsV210ToastPanel"
+#endif
+
 static NSTimer *DPAddressWatch;
 
 static void DPApplySidebarAddress(DPPatch *patch) {

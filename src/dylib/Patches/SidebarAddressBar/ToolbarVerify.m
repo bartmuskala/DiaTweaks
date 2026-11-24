@@ -11,14 +11,9 @@ NSString *DPSidebarVerifyToolbar(void) {
         DPToolbarHover *hover = [DPToolbarHover forPane:pane];
         BOOL replaced = DPSidebarReplacesToolbar(pane);
         if (replaced) {
-            if (hover.tracking || hover.animation || hover.inPlaceAnimation || hover.peeking)
+            if (hover.tracking || hover.animation || hover.inPlaceAnimation)
                 return @"replacement still has toolbar hover or animation";
         } else if (hover.progress > 0 || hover.inPlaceProgress > 0) continue;
-        if (replaced && DPSidebarToolbarIsPeeking(pane)) {
-            if (bar.alphaValue < 0.99 || !NSEqualRects(bar.frame, DPSidebarToolbarBase(bar)))
-                return @"toolbar did not reveal for copy feedback";
-            continue;
-        }
         NSView *bookmarks = replaced ? nil : DPBookmarksUnder(pane, bar);
         NSArray *bars = bookmarks ? @[bar, bookmarks] : @[bar];
         BOOL hidden = replaced || DPHideToolbar.on, found = NO;
