@@ -146,7 +146,7 @@ int main(void) {
         class_replaceMethod(preview, @selector(load), imp_implementationWithBlock(^(id self) {}), "v@:");
 
         DPLoadPatches();
-        expect(DPPatchCount == 108, @"the dylib lists 108 tweaks");
+        expect(DPPatchCount == 113, @"the dylib lists 113 tweaks");
         // Dia's classes aren't here, so every tweak would look unavailable; this test is about the layout.
         for (NSUInteger i = 0; i < DPPatchCount; i++) DPPatches[i]->unavailable = NO;
 
